@@ -1,87 +1,227 @@
 🤖 Telegram AI Automation using n8n
 
-This project is an AI-powered Telegram bot automation built using n8n.
-It listens to incoming Telegram messages, processes them using an AI agent (Google Gemini), and replies automatically.
+An AI-powered Telegram bot built using **n8n** that receives messages, processes them with **Google Gemini AI**, and replies automatically.
 
-🚀 Features
-📩 Receive messages from Telegram
-🧠 Process messages using AI (Google Gemini)
-💬 Send intelligent replies automatically
-🧠 Optional memory support for context-aware conversations
-⚡ Fully automated workflow using n8n
-🏗️ Workflow Architecture
+
+## 🚀 Features
+
+* 📩 Receive Telegram messages
+* 🧠 AI-generated responses (Google Gemini)
+* 💬 Auto-reply system
+* 🧠 Optional memory for context
+* ⚡ Fully automated workflow
+
+---
+
+## 🏗️ Workflow Architecture
+
+```
 Telegram Trigger → AI Agent → Send Message (Telegram)
-Components:
-Telegram Trigger
-Listens for incoming user messages
-AI Agent
-Uses Google Gemini Chat Model
-Optional memory for conversation context
-Send Message Node
-Sends AI-generated response back to user
-🛠️ Prerequisites
+```
 
-Before setup, ensure you have:
+---
 
-Node.js (v18+ recommended)
-n8n installed (local or cloud)
-Telegram account
-Google Gemini API key
-⚙️ Installation & Setup
-1. Install n8n Locally
+## 🧩 Components
+
+### 1. Telegram Trigger
+
+* Listens to incoming messages from users
+
+### 2. AI Agent
+
+* Processes input using Google Gemini
+* Can use memory for context retention
+
+### 3. Send Message Node
+
+* Sends response back to Telegram user
+
+---
+
+## 🛠️ Prerequisites
+
+Make sure you have:
+
+* Node.js (v18+)
+* n8n installed
+* Telegram account
+* Google Gemini API key
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Install n8n
+
+```bash
 npm install n8n -g
 n8n start
+```
 
-Open:
+Open in browser:
 
+```
 http://localhost:5678
-2. Create Telegram Bot
-Open Telegram and search: @BotFather
-Run:
+```
+
+---
+
+### 2. Create Telegram Bot
+
+1. Open Telegram
+2. Search for **@BotFather**
+3. Run:
+
+```
 /start
 /newbot
-Copy your Bot Token
-3. Fix Telegram Webhook (IMPORTANT)
+```
 
-Since you're running on localhost, Telegram requires HTTPS.
+4. Copy your **Bot Token**
 
-Option A: Use ngrok (Recommended)
+---
+
+### 3. Setup HTTPS (Fix Webhook Error)
+
+Telegram requires HTTPS — localhost won't work directly.
+
+#### ✅ Use ngrok
+
+```bash
 ngrok http 5678
+```
 
-Copy HTTPS URL like:
+Example output:
 
+```
 https://abcd1234.ngrok.io
-4. Configure Telegram Node in n8n
-Paste Bot Token
-Set Webhook URL:
+```
+
+---
+
+### 4. Configure Telegram in n8n
+
+* Paste your **Bot Token**
+* Set Webhook URL:
+
+```
 https://your-ngrok-url/webhook
-5. Setup Google Gemini API
-Go to: https://ai.google.dev
-Generate API key
-Add in n8n credentials:
-Service: Google Gemini
-Paste API key
-6. Configure AI Agent Node
-Connect:
-Chat Model → Google Gemini
-Memory → Simple Memory (optional)
-7. Connect Nodes Properly
+```
 
-Ensure flow:
+---
 
+### 5. Setup Google Gemini API
+
+1. Visit: [https://ai.google.dev](https://ai.google.dev)
+2. Generate API key
+3. Add credentials in n8n:
+
+   * Service: Google Gemini
+   * Paste API Key
+
+---
+
+### 6. Configure AI Agent Node
+
+* Connect:
+
+  * Chat Model → Google Gemini
+  * Memory → Simple Memory (optional)
+
+---
+
+### 7. Connect Workflow Nodes
+
+Ensure correct flow:
+
+```
 Telegram Trigger → AI Agent → Send Message
-▶️ How to Use
-Start n8n
-Start ngrok
-Activate workflow in n8n
-Open your Telegram bot
-Send a message
+```
 
-✅ You will receive an AI-generated reply instantly
+---
 
-📂 Example Use Cases
-AI Chatbot
-Customer Support Automation
-Personal Assistant Bot
-FAQ Automation
-Learning Assistant
+## ▶️ How to Use
+
+1. Start n8n
+2. Run ngrok
+3. Activate workflow in n8n
+4. Open your Telegram bot
+5. Send a message
+
+✅ You’ll receive an AI-generated reply instantly
+
+---
+
+## 📂 Use Cases
+
+* AI Chatbot
+* Customer Support Bot
+* Personal Assistant
+* FAQ Automation
+* Learning Assistant
+
+---
+
+## ⚠️ Common Errors & Fixes
+
+### ❌ Bad Request: HTTPS required
+
+**Fix:**
+
+* Use ngrok OR deploy n8n on a server with HTTPS
+
+---
+
+### ❌ Bot not responding
+
+Check:
+
+* Workflow is **active**
+* ngrok is running
+* Webhook URL is correct
+
+---
+
+### ❌ AI not responding
+
+Check:
+
+* Gemini API key is valid
+* AI Agent node is properly configured
+
+---
+
+## 🧠 Future Improvements
+
+* WhatsApp integration
+* Database (MongoDB / Notion)
+* Voice input support
+* Multi-language support
+* Cloud deployment (Render / Railway / VPS)
+
+---
+
+## 📦 Tech Stack
+
+* n8n (Automation)
+* Telegram Bot API
+* Google Gemini AI
+* ngrok (HTTPS tunneling)
+
+---
+
+## 🙌 Author
+
+**Vishal Waghmare**
+AI Builder | Business Analyst | Automation Enthusiast
+
+---
+
+## ⭐ Support
+
+If you found this useful:
+
+* Star ⭐ the repository
+* Share it
+* Build your own automation 🚀
+
